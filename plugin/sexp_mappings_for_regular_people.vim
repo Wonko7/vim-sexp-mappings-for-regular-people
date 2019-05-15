@@ -17,6 +17,7 @@ function! s:sexp_mappings() abort
   if !exists('g:sexp_loaded')
     return
   endif
+  " FIXME: check what this does.
   call s:map_sexp_wrap('e', 'cseb', '(', ')', 0)
   call s:map_sexp_wrap('e', 'cse(', '(', ')', 0)
   call s:map_sexp_wrap('e', 'cse)', '(', ')', 1)
@@ -25,6 +26,7 @@ function! s:sexp_mappings() abort
   call s:map_sexp_wrap('e', 'cse{', '{', '}', 0)
   call s:map_sexp_wrap('e', 'cse}', '{', '}', 1)
 
+  " overwritten by paredit:
   nmap <buffer> dsf <Plug>(sexp_splice_list)
 
   nmap <buffer> B   <Plug>(sexp_move_to_prev_element_head)
@@ -40,17 +42,28 @@ function! s:sexp_mappings() abort
   omap <buffer> gE  <Plug>(sexp_move_to_prev_element_tail)
   omap <buffer> E   <Plug>(sexp_move_to_next_element_tail)
 
-  nmap <buffer> <I  <Plug>(sexp_insert_at_list_head)
-  nmap <buffer> >I  <Plug>(sexp_insert_at_list_tail)
-  nmap <buffer> <f  <Plug>(sexp_swap_list_backward)
-  nmap <buffer> >f  <Plug>(sexp_swap_list_forward)
-  nmap <buffer> <e  <Plug>(sexp_swap_element_backward)
-  nmap <buffer> >e  <Plug>(sexp_swap_element_forward)
-  nmap <buffer> >(  <Plug>(sexp_emit_head_element)
-  nmap <buffer> <)  <Plug>(sexp_emit_tail_element)
-  nmap <buffer> <(  <Plug>(sexp_capture_prev_element)
-  nmap <buffer> >)  <Plug>(sexp_capture_next_element)
+  nmap <buffer> <leader>s  <Plug>(sexp_splice_list)
+  nmap <buffer> <leader>gi <Plug>(sexp_insert_at_list_head)
+  nmap <buffer> <leader>ge <Plug>(sexp_insert_at_list_tail)
+  nmap <buffer> <leader><  <Plug>(sexp_swap_list_backward)
+  nmap <buffer> <leader>>  <Plug>(sexp_swap_list_forward)
+  nmap <buffer> <          <Plug>(sexp_swap_element_backward)
+  nmap <buffer> >          <Plug>(sexp_swap_element_forward)
+  nmap <buffer> <leader>L  <Plug>(sexp_emit_head_element)
+  nmap <buffer> <leader>H  <Plug>(sexp_emit_tail_element)
+  nmap <buffer> <leader>h  <Plug>(sexp_capture_prev_element)
+  nmap <buffer> <leader>l  <Plug>(sexp_capture_next_element)
 endfunction
+" keeping as is:
+" 
+" 'sexp_square_head_wrap_list':     '<LocalLeader>#[',
+" 'sexp_square_tail_wrap_list':     '<LocalLeader>#]',
+" 'sexp_curly_head_wrap_list':      '<LocalLeader>#{',
+" 'sexp_curly_tail_wrap_list':      '<LocalLeader>#}',
+" 'sexp_square_head_wrap_element':  '<LocalLeader>[',
+" 'sexp_square_tail_wrap_element':  '<LocalLeader>]',
+" 'sexp_curly_head_wrap_element':   '<LocalLeader>{',
+" 'sexp_curly_tail_wrap_element':   '<LocalLeader>}',
 
 function! s:setup() abort
   augroup sexp_mappings_for_regular_people
