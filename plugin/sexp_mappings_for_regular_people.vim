@@ -29,20 +29,26 @@ function! s:sexp_mappings() abort
   " overwritten by paredit:
   nmap <buffer> dsf <Plug>(sexp_splice_list)
 
-  nmap <buffer> B   <Plug>(sexp_move_to_prev_element_head)
-  nmap <buffer> W   <Plug>(sexp_move_to_next_element_head)
-  nmap <buffer> gE  <Plug>(sexp_move_to_prev_element_tail)
-  nmap <buffer> E   <Plug>(sexp_move_to_next_element_tail)
-  xmap <buffer> B   <Plug>(sexp_move_to_prev_element_head)
-  xmap <buffer> W   <Plug>(sexp_move_to_next_element_head)
-  xmap <buffer> gE  <Plug>(sexp_move_to_prev_element_tail)
-  xmap <buffer> E   <Plug>(sexp_move_to_next_element_tail)
-  omap <buffer> B   <Plug>(sexp_move_to_prev_element_head)
-  omap <buffer> W   <Plug>(sexp_move_to_next_element_head)
-  omap <buffer> gE  <Plug>(sexp_move_to_prev_element_tail)
-  omap <buffer> E   <Plug>(sexp_move_to_next_element_tail)
+  "nmap <buffer> B   <Plug>(sexp_move_to_prev_element_head)
+  "nmap <buffer> W   <Plug>(sexp_move_to_next_element_head)
+  "nmap <buffer> gE  <Plug>(sexp_move_to_prev_element_tail)
+  "nmap <buffer> E   <Plug>(sexp_move_to_next_element_tail)
+  "xmap <buffer> B   <Plug>(sexp_move_to_prev_element_head)
+  "xmap <buffer> W   <Plug>(sexp_move_to_next_element_head)
+  "xmap <buffer> gE  <Plug>(sexp_move_to_prev_element_tail)
+  "xmap <buffer> E   <Plug>(sexp_move_to_next_element_tail)
+  "omap <buffer> B   <Plug>(sexp_move_to_prev_element_head)
+  "omap <buffer> W   <Plug>(sexp_move_to_next_element_head)
+  "omap <buffer> gE  <Plug>(sexp_move_to_prev_element_tail)
+  "omap <buffer> E   <Plug>(sexp_move_to_next_element_tail)
 
+  nmap <buffer> <leader>S  :call PareditJoin()<cr>
+  nmap <buffer> <leader>o  :call PareditSplit()<cr>
   nmap <buffer> <leader>s  <Plug>(sexp_splice_list)
+
+  nmap <buffer> <leader>r  <Plug>(sexp_raise_list)
+  nmap <buffer> <leader>R  <Plug>(sexp_raise_element)
+
   nmap <buffer> <leader>gi <Plug>(sexp_insert_at_list_head)
   nmap <buffer> <leader>ge <Plug>(sexp_insert_at_list_tail)
   nmap <buffer> <leader><  <Plug>(sexp_swap_list_backward)
@@ -53,6 +59,9 @@ function! s:sexp_mappings() abort
   nmap <buffer> <leader>H  <Plug>(sexp_emit_tail_element)
   nmap <buffer> <leader>h  <Plug>(sexp_capture_prev_element)
   nmap <buffer> <leader>l  <Plug>(sexp_capture_next_element)
+
+  nmap <buffer> <leader>== <Plug>(sexp_indent_top)
+  nmap <buffer> <leader>=- <Plug>(sexp_indent)
 endfunction
 " keeping as is:
 " 
