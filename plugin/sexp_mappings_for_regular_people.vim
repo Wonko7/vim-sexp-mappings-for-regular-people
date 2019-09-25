@@ -46,8 +46,8 @@ function! s:sexp_mappings() abort
   nmap <buffer> <leader>o  :call PareditSplit()<cr>
   nmap <buffer> <leader>s  <Plug>(sexp_splice_list)
 
-  nmap <buffer> <leader>r  <Plug>(sexp_raise_list)
-  nmap <buffer> <leader>R  <Plug>(sexp_raise_element)
+  nmap <buffer> <leader>R  <Plug>(sexp_raise_list)
+  nmap <buffer> <leader>r  <Plug>(sexp_raise_element)
 
   nmap <buffer> <leader>gi <Plug>(sexp_insert_at_list_head)
   nmap <buffer> <leader>ge <Plug>(sexp_insert_at_list_tail)
@@ -62,9 +62,38 @@ function! s:sexp_mappings() abort
 
   nmap <buffer> <leader>== <Plug>(sexp_indent_top)
   nmap <buffer> <leader>=- <Plug>(sexp_indent)
+
+  nmap <buffer> <leader>i  <Plug>(sexp_round_head_wrap_element)
+  nmap <buffer> <leader>a  <Plug>(sexp_round_tail_wrap_element)
+
+  nmap <buffer> <M-S>  :call PareditJoin()<cr>
+  nmap <buffer> <M-o>  :call PareditSplit()<cr>
+  nmap <buffer> <M-s>  <Plug>(sexp_splice_list)
+  nmap <buffer> <M-R>  <Plug>(sexp_raise_list)
+  nmap <buffer> <M-r>  <Plug>(sexp_raise_element)
+  nmap <buffer> <M-e> <Plug>(sexp_insert_at_list_tail)
+  " nmap <buffer> <M-<>  <Plug>(sexp_swap_list_backward)
+  " <buffer> <M->>  <Plug>(sexp_swap_list_forward)
+  nmap <buffer> <M-L>  <Plug>(sexp_emit_head_element)
+  nmap <buffer> <M-H>  <Plug>(sexp_emit_tail_element)
+  nmap <buffer> <M-h>  <Plug>(sexp_capture_prev_element)
+  nmap <buffer> <M-l>  <Plug>(sexp_capture_next_element)
+
+  nmap <buffer> <M-i>  <Plug>(sexp_round_head_wrap_element)
+  nmap <buffer> <M-a>  <Plug>(sexp_round_tail_wrap_element)
+
+  nmap <buffer> == <Plug>(sexp_indent_top)
+  nmap <buffer> =- <Plug>(sexp_indent)
+
+
 endfunction
+
+
+
+
+
 " keeping as is:
-" 
+"
 " 'sexp_square_head_wrap_list':     '<LocalLeader>#[',
 " 'sexp_square_tail_wrap_list':     '<LocalLeader>#]',
 " 'sexp_curly_head_wrap_list':      '<LocalLeader>#{',
